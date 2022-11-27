@@ -39,10 +39,10 @@ class AsEventListener
         public int        $priority = 0,
     )
     {
-        if (!empty($group)) {
+        if (isset($group)) {
             $this->group = (array) $group;
         }
-        if (!empty($env)) {
+        if (isset($env)) {
             $this->group = (array) $env;
         }
     }
