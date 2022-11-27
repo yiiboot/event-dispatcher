@@ -1,15 +1,16 @@
 {
-    "name": "yiiboot/_____",
+    "name": "yiiboot/event-dispatcher",
     "type": "library",
-    "description": "_____",
+    "description": "yii event dispatcher",
     "keywords": [
-        "_____"
+        "yii3",
+        "event dispatcher"
     ],
     "homepage": "https://github.com/yiiboot",
     "license": "Apache-2.0",
     "support": {
-        "issues": "https://github.com/yiiboot/_____/issues?state=open",
-        "source": "https://github.com/yiiboot/_____"
+        "issues": "https://github.com/yiiboot/event-dispatcher/issues?state=open",
+        "source": "https://github.com/yiiboot/event-dispatcher"
     },
     "funding": [
         {
@@ -24,7 +25,11 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^8.1"
+        "php": "^8.1",
+        "yiiboot/attributed": "dev-master",
+        "yiisoft/arrays": "^2.1",
+        "yiisoft/injector": "^1.1",
+        "yiisoft/yii-event": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
@@ -35,12 +40,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Yiiboot\\_____\\": "src"
+            "Yiiboot\\EventDispatcher\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Yiiboot\\_____\\Tests\\": "tests"
+            "Yiiboot\\event-dispatcher\\Tests\\": "tests"
         }
     },
     "config": {
@@ -50,8 +55,26 @@
             "composer/package-versions-deprecated": true
         }
     },
+    "extra": {
+        "config-plugin-options": {
+            "build-merge-plan": true,
+            "source-directory": "config"
+        },
+        "config-plugin": {
+            "web": "web.php",
+            "params": "params.php",
+            "console": "console.php",
+            "providers": "providers.php"
+        }
+    },
     "scripts": {
         "test": "phpunit --testdox --no-interaction",
         "test-watch": "phpunit-watcher watch"
-    }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/Users/niqingyang/Desktop/projects/php/yiiboot/attributed"
+        }
+    ]
 }
