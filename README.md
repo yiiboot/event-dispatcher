@@ -6,16 +6,24 @@
     <br>
 </p>
 
-[![Latest Stable Version](https://poser.pugx.org/yiiboot/event-dispatcher/v/stable.png)](https://packagist.org/packages/yiiboot/event-dispatcher)
-[![Total Downloads](https://poser.pugx.org/yiiboot/event-dispatcher/downloads.png)](https://packagist.org/packages/yiiboot/event-dispatcher)
-[![Build status](https://github.com/yiiboot/event-dispatcher/workflows/build/badge.svg)](https://github.com/yiiboot/event-dispatcher/actions?query=workflow%3Abuild)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yiiboot/event-dispatcher/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yiiboot/event-dispatcher/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/yiiboot/event-dispatcher/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/yiiboot/event-dispatcher/?branch=master)
-[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%yiiboot%2Fevent-dispatcher%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/yiiboot/event-dispatcher/master)
-[![static analysis](https://github.com/yiiboot/event-dispatcher/workflows/static%20analysis/badge.svg)](https://github.com/yiiboot/event-dispatcher/actions?query=workflow%3A%22static+analysis%22)
-[![type-coverage](https://shepherd.dev/github/yiiboot/event-dispatcher/coverage.svg)](https://shepherd.dev/github/yiiboot/event-dispatcher)
+[//]: # ([![Latest Stable Version]&#40;https://poser.pugx.org/yiiboot/event-dispatcher/v/stable.png&#41;]&#40;https://packagist.org/packages/yiiboot/event-dispatcher&#41;)
 
-The package ...
+[//]: # ([![Total Downloads]&#40;https://poser.pugx.org/yiiboot/event-dispatcher/downloads.png&#41;]&#40;https://packagist.org/packages/yiiboot/event-dispatcher&#41;)
+
+[//]: # ([![Build status]&#40;https://github.com/yiiboot/event-dispatcher/workflows/build/badge.svg&#41;]&#40;https://github.com/yiiboot/event-dispatcher/actions?query=workflow%3Abuild&#41;)
+
+[//]: # ([![Scrutinizer Code Quality]&#40;https://scrutinizer-ci.com/g/yiiboot/event-dispatcher/badges/quality-score.png?b=master&#41;]&#40;https://scrutinizer-ci.com/g/yiiboot/event-dispatcher/?branch=master&#41;)
+
+[//]: # ([![Code Coverage]&#40;https://scrutinizer-ci.com/g/yiiboot/event-dispatcher/badges/coverage.png?b=master&#41;]&#40;https://scrutinizer-ci.com/g/yiiboot/event-dispatcher/?branch=master&#41;)
+
+[//]: # ([![Mutation testing badge]&#40;https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%yiiboot%2Fevent-dispatcher%2Fmaster&#41;]&#40;https://dashboard.stryker-mutator.io/reports/github.com/yiiboot/event-dispatcher/master&#41;)
+
+[//]: # ([![static analysis]&#40;https://github.com/yiiboot/event-dispatcher/workflows/static%20analysis/badge.svg&#41;]&#40;https://github.com/yiiboot/event-dispatcher/actions?query=workflow%3A%22static+analysis%22&#41;)
+
+[//]: # ([![type-coverage]&#40;https://shepherd.dev/github/yiiboot/event-dispatcher/coverage.svg&#41;]&#40;https://shepherd.dev/github/yiiboot/event-dispatcher&#41;)
+
+An way to define an event listener with the AsEventListener PHP attribute. This allows to configure the listener inside
+its class, without having to add any configuration in external files
 
 ## Requirements
 
@@ -38,8 +46,7 @@ use Yiiboot\EventDispatcher\Attribute\AsEventListener;
 
 #[AsEventListener(event: CustomEvent::class, method: 'onCustomEvent')]
 #[AsEventListener(event: FooEvent::class, priority: 42)]
-#[AsEventListener(method: 'onBarEvent')]
-#[AsEventListener(event: EnvEvent::class, group: ['console', 'web'], env: 'prod')]
+#[AsEventListener(method: 'onBarEvent', group: ['console', 'web'], env: 'prod')]
 final class MyMultiListener
 {
     public function onCustomEvent(CustomEvent $event): void
@@ -53,6 +60,12 @@ final class MyMultiListener
     }
 
     public function onBarEvent(BarEvent $event): void
+    {
+        // ...
+    }
+
+    #[AsEventListener]
+    public function onMethodEvent(BarEvent $event): void
     {
         // ...
     }
@@ -88,8 +101,8 @@ The code is statically analyzed with [Psalm](https://psalm.dev/). To run static 
 
 ### Code style
 
-Use [Rector](https://github.com/rectorphp/rector) to make codebase follow some specific rules or 
-use either newest or any specific version of PHP: 
+Use [Rector](https://github.com/rectorphp/rector) to make codebase follow some specific rules or
+use either newest or any specific version of PHP:
 
 ```shell
 ./vendor/bin/rector
@@ -97,7 +110,7 @@ use either newest or any specific version of PHP:
 
 ### Dependencies
 
-Use [ComposerRequireChecker](https://github.com/maglnet/ComposerRequireChecker) to detect transitive 
+Use [ComposerRequireChecker](https://github.com/maglnet/ComposerRequireChecker) to detect transitive
 [Composer](https://getcomposer.org/) dependencies.
 
 ## License

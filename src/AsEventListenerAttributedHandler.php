@@ -137,7 +137,7 @@ class AsEventListenerAttributedHandler extends AbstractAttributedHandler
             || !($type = $m->getParameters()[0]->getType()) instanceof \ReflectionNamedType
             || $type->isBuiltin()
         ) {
-            throw new InvalidEventConfigurationFormatException(sprintf('Incorrect event listener format. "%s" must define the "event" attribute on "AsEventListener" Attribute.', $class->getName()));
+            throw new InvalidEventConfigurationFormatException(sprintf('Incorrect event listener format. "%s:%s" must define the "event" attribute on "AsEventListener" Attribute.', $class->getName(), $method));
         }
 
         return $type->getName();
