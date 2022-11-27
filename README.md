@@ -39,8 +39,23 @@ composer require yiiboot/event-dispatcher
 
 ## General usage
 
+the `config/params.php`
 ```php
-amespace App\EventListener;
+return [
+    // ...
+    'yiiboot/attributed' => [
+        'paths' => [
+            // ...
+            dirname(__DIR__) . '/src/EventListener',
+        ]
+    ]
+];
+```
+
+the `src/EventListener/MyMultiListener.php`
+
+```php
+namespace App\EventListener;
 
 use Yiiboot\EventDispatcher\Attribute\AsEventListener;
 
