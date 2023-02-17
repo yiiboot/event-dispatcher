@@ -29,7 +29,7 @@
         "yiiboot/attributed": "^2.0",
         "yiisoft/arrays": "^2.1",
         "yiisoft/injector": "^1.1",
-        "yiisoft/yii-event": "^1.0"
+        "yiisoft/yii-event": "^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
